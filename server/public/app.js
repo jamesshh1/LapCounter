@@ -1,7 +1,7 @@
 // ── Config ─────────────────────────────────────────────────────────────────
 // When deploying, set SERVER_URL to your public host (e.g. https://your-app.railway.app).
 // Leave empty to auto-connect to the same host (works for both local and production).
-const SERVER_URL = '';
+const SERVER_URL = 'https://lapcounter-production.up.railway.app';
 
 // ── Socket connection ──────────────────────────────────────────────────────
 const socket = SERVER_URL ? io(SERVER_URL) : io();
