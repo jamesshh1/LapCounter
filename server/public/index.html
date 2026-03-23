@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lap Tracker</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Pad Up Charity Run Lap Tracker</h1>
+    <div id="connection-status" class="status disconnected">Connecting…</div>
+  </header>
+
+  <div class="countdown-bar">
+    <span class="countdown-label">Time Remaining</span>
+    <span id="countdown-display" class="countdown-display">24:00:00</span>
+  </div>
+
+  <!-- Team cards -->
+  <section class="teams-section">
+    <h2>Teams</h2>
+    <div id="teams-grid" class="teams-grid"></div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section class="leaderboard-section">
+    <h2>Leaderboard</h2>
+    <ol id="leaderboard" class="leaderboard"></ol>
+  </section>
+
+  <!-- Marathon popup -->
+  <div id="marathon-overlay" class="marathon-overlay hidden">
+    <div class="marathon-modal">
+      <div class="marathon-emoji">🏅</div>
+      <p id="marathon-message" class="marathon-message"></p>
+      <button id="marathon-close" class="marathon-close">Dismiss</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

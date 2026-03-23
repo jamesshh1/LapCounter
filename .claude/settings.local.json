@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(lsof:*)",
+      "WebFetch(domain:padup.co.uk)"
+    ]
+  }
+}

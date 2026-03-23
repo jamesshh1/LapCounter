@@ -1,0 +1,355 @@
+/* ── Reset & base ─────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #d46559;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --border-hover: #d1d5db;
+  --primary: #d46559;
+  --primary-dark: #b8544a;
+  --green: #2d802f;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --gold: gold;
+  --silver: silver;
+  --bronze: #cd7f32;
+  --radius: 8px;
+  --gap: 16px;
+  --tap: 52px;
+  --shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100dvh;
+  padding-bottom: 80px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gap) 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status.connected    { background: #dcfce7; color: #166534; }
+.status.disconnected { background: #fee2e2; color: #991b1b; }
+
+/* ── Countdown bar ───────────────────────────────────────────────────────── */
+
+.countdown-bar {
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px var(--gap);
+  gap: 4px;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+.countdown-display {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+
+section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px var(--gap);
+}
+
+section h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: var(--gap);
+}
+
+/* ── Team cards ──────────────────────────────────────────────────────────── */
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+
+.empty-hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 8px 0;
+}
+
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.team-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-hover);
+}
+
+.team-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.team-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.lap-display {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.lap-label {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: -10px;
+}
+
+.distance-display {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.distance-sep { color: var(--text-light); }
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.lap-btn {
+  flex: 1;
+  height: 64px;
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.lap-btn:active { transform: scale(0.96); }
+
+.lap-btn.add {
+  background: var(--primary);
+  color: #fff;
+}
+
+.lap-btn.add:hover  { filter: brightness(1.15); }
+.lap-btn.add:active { filter: brightness(0.9); }
+
+.lap-btn:disabled {
+  background: #e5e7eb;
+  color: var(--text-muted);
+  cursor: not-allowed;
+  font-size: 1rem;
+  font-weight: 600;
+  transform: none;
+  filter: none;
+}
+
+/* ── Leaderboard ─────────────────────────────────────────────────────────── */
+
+.leaderboard {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leaderboard li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.leaderboard li.rank-1 { border-color: gold;          background: #fffbeb; }
+.leaderboard li.rank-2 { border-color: silver;         background: #f9fafb; }
+.leaderboard li.rank-3 { border-color: var(--bronze);  background: #fdf6ee; }
+
+.rank-badge {
+  font-size: 1.3rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.lb-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.lb-laps {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.lb-laps-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: 3px;
+}
+
+/* ── Marathon popup ──────────────────────────────────────────────────────── */
+
+.marathon-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.marathon-overlay.hidden { display: none; }
+
+.marathon-modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.marathon-emoji { font-size: 3rem; }
+
+.marathon-message {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.marathon-close {
+  margin-top: 8px;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.marathon-close:hover { filter: brightness(1.15); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.2rem; }
+  .teams-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.lap-pop { animation: pop 0.22s ease-out; }
